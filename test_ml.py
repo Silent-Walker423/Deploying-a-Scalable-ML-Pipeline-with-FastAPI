@@ -1,21 +1,18 @@
 import pytest
 import pandas as pd
 from ml.model import train_model
-from sklearn.datasets import  make_classification
+from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
 # TODO: add necessary import
 
 # TODO: implement the first test. Change the function name and input as needed
-def test_one():
+def test_model_type():
     """
-    # add description for the first test
+    # test that the train_model function returns the correct model type
     """
-
-    X, y = make_classification(n_samples=100, n_features=200, random_state=42)
-    model = train_model(X,y)
-    print(model)
-
-    assert hasattr(model, "coef_"), "The model should have attributes after training"
+    X_train, y_train = make_classification(n_samples=100, n_features=200, random_state=42)
+    model = train_model(X_train, y_train)
+    assert type(model) == RandomForestClassifier, "Model is not Random Forest Classifer "
 
 # TODO: implement the second test. Change the function name and input as needed
 def test_two():
