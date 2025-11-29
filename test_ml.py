@@ -1,8 +1,10 @@
 import pytest
 import pandas as pd
-from ml.model import train_model
+import numpy as np
+from ml.model import train_model, compute_model_metrics, inference
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 # TODO: add necessary import
 
 # TODO: implement the first test. Change the function name and input as needed
@@ -15,12 +17,16 @@ def test_model_type():
     assert type(model) == RandomForestClassifier, "Model is not Random Forest Classifer "
 
 # TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_inference_function_type():
     """
     # add description for the second test
     """
-    # Your code here
-    pass
+    X, y = make_classification(n_samples=200, n_features=200, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    model = train_model(X_train, y_train)
+    preds = inference(model, X_test)
+
+    assert type(preds) == np.ndarray, "preds is not an array"
 
 
 # TODO: implement the third test. Change the function name and input as needed
