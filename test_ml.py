@@ -5,9 +5,9 @@ from ml.model import train_model, compute_model_metrics, inference
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-# TODO: add necessary import
 
-# TODO: implement the first test. Change the function name and input as needed
+
+# Implement the first required test.
 def test_model_type():
     """
     # test that the train_model function returns the correct model type
@@ -16,7 +16,7 @@ def test_model_type():
     model = train_model(X_train, y_train)
     assert type(model) == RandomForestClassifier, "Model is not Random Forest Classifer "
 
-# TODO: implement the second test. Change the function name and input as needed
+# Implement the second required test.
 def test_inference_function_type():
     """
     # Test function to ensure that the inference function is returing an array
@@ -29,7 +29,7 @@ def test_inference_function_type():
     assert type(preds) == np.ndarray, "preds is not an array"
 
 
-# TODO: implement the third test. Change the function name and input as needed
+#Implement the third required test. 
 def test_compute_metrics_function():
     """
     # Test for the compute model metrics function to ensure the values are floats and are greater than 0 and less than 1

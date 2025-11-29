@@ -12,13 +12,13 @@ from ml.model import (
     save_model,
     train_model,
 )
-# TODO: load the cencus.csv data
+# load the cencus.csv data
 project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
 data = pd.read_csv(data_path) # your code here
 
-# TODO: split the provided data to have a train dataset and a test dataset
+# split the provided data to have a train dataset and a test dataset used a set split of 20%
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.2, random_state=0)
 
@@ -36,16 +36,12 @@ cat_features = [
     "native-country",
 ]
 
-# TODO: use the process_data function provided to process the data.
+# use the process_data function provided to process the data.
 X_train, y_train, encoder, lb = process_data(
     train,
     categorical_features=cat_features,
     training=True,
     label="salary"
-    # your code here
-    # use the train dataset 
-    # use training=True
-    # do not need to pass encoder and lb as input
     )
 
 X_test, y_test, _, _ = process_data(
@@ -57,7 +53,7 @@ X_test, y_test, _, _ = process_data(
     lb=lb,
 )
 
-# TODO: use the train_model function to train the model on the training dataset
+# use the train_model function to train the model on the training dataset
 model = train_model(X_train, y_train) 
 
 # save the model and the encoder
@@ -93,9 +89,8 @@ for col in cat_features:
             encoder=encoder,
             lb=lb,
             model = model
-            # your code here
-            # use test, col and slicevalue as part of the input
         )
+        
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
